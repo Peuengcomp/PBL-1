@@ -1,9 +1,11 @@
 # Início do código
-periodo_de_vendas = True
-total_de_ingressos = int(input("Quantos ingressos deseja vender para este evento\n"))
-if total_de_ingressos == 0:
+inicializador = int(input("Para entrar no programa, digite qualquer coisa. Se quiser encerrar, digite 0\n"))
+if inicializador == 0:
     print("Programa encerrado\n") 
     exit()
+periodo_de_vendas = True
+total_de_ingressos = int(input("Quantos ingressos deseja vender para este evento\n"))
+total_aux = total_de_ingressos
 # Cortesia dos membros do DA
 cortesia_da = int(input("São quantos membros do D.A.\n"))
 # Cortesia para convidados
@@ -19,6 +21,7 @@ ingresso_inteira = 0
 ingresso_meia = 0
 ingressos_alunos_ecomp_total = 0
 # Tipos de arrecadação
+arrecadacao_total = 0
 arrecadacao_inteira = 0
 arrecadacao_meia = 0
 arrecadacao_ecomp = 0
@@ -45,13 +48,14 @@ while periodo_de_vendas and total_de_ingressos > 0:
                 ingressos_vendidos = int(input("Qual foi a quantidade de ingressos emitidos?\n"))
                 while ingressos_vendidos > total_de_ingressos:
                     ingressos_vendidos = int(input("Digite um valor válido\n"))
-                aux = 0
+                aux = 1
                 venda_comissionada_bio = 0
                 cortesia_comissionada_bio = 0
                 ingresso_inteira_bio = 0
                 ingresso_meia_bio = 0
                 ingresso_alunos_ecomp_bio = 0
-                while aux < ingressos_vendidos:
+                while aux <= ingressos_vendidos:
+                    print("Sobre o ingresso %d" % aux)
                     idade = int(input("Digite a idade do comprador\n"))
                     idades += idade
                     ingresso = int(input("Qual tipo de ingresso emitido? Digite 1 para inteira; 2, para meia; 3, para alunos de ECOMP\n"))
@@ -68,6 +72,8 @@ while periodo_de_vendas and total_de_ingressos > 0:
                         ingressos_emitidos += 1
                         aux += 1
                         total_de_ingressos -= 1
+                        while pergunta_meia != 1 and pergunta_meia != 2:
+                            pergunta_meia = int(input("Digite 1 para meia para estudantes; 2, para idosos\n"))
                         if pergunta_meia == 1:
                             ingressos_meias_estudantes += 1
                         elif pergunta_meia == 2:
@@ -97,19 +103,24 @@ while periodo_de_vendas and total_de_ingressos > 0:
                     if diferenca <= cortesia_comissionada_bio:
                         cortesia_comissionada_bio = diferenca
                         total_de_ingressos -= cortesia_comissionada_bio
+                        ingressos_emitidos += cortesia_comissionada_bio
+                        cortesia_comissionadas_total += cortesia_comissionada_bio
                     else:
                         total_de_ingressos -= cortesia_comissionada_bio
+                        ingressos_emitidos += cortesia_comissionada_bio
+                        cortesia_comissionadas_total += cortesia_comissionada_bio
             elif curso == 2:
                 ingressos_vendidos = int(input("Qual foi a quantidade de ingressos emitidos?\n"))
                 while ingressos_vendidos > total_de_ingressos:
                     ingressos_vendidos = int(input("Digite um valor válido\n"))
-                aux = 0
+                aux = 1
                 venda_comissionada_enf = 0
                 cortesia_comissionada_enf = 0
                 ingresso_inteira_enf = 0
                 ingresso_meia_enf = 0
                 ingresso_alunos_ecomp_enf = 0
-                while aux < ingressos_vendidos:
+                while aux <= ingressos_vendidos:
+                    print("Sobre o ingresso %d" % aux)
                     idade = int(input("Digite a idade do comprador\n"))
                     idades += idade
                     ingresso = int(input("Qual tipo de ingresso foi emitido? Digite 1 para inteira; 2, para meia; 3, para alunos de ECOMP\n"))
@@ -126,6 +137,8 @@ while periodo_de_vendas and total_de_ingressos > 0:
                         ingressos_emitidos += 1
                         aux += 1
                         total_de_ingressos -= 1
+                        while pergunta_meia != 1 and pergunta_meia != 2:
+                            pergunta_meia = int(input("Digite 1 para meia para estudantes; 2, para idosos\n"))
                         if pergunta_meia == 1:
                             ingressos_meias_estudantes += 1
                         elif pergunta_meia == 2:
@@ -155,8 +168,12 @@ while periodo_de_vendas and total_de_ingressos > 0:
                     if diferenca <= cortesia_comissionada_enf:
                         cortesia_comissionada_enf = diferenca
                         total_de_ingressos -= cortesia_comissionada_enf
+                        ingressos_emitidos += cortesia_comissionada_enf
+                        cortesia_comissionadas_total += cortesia_comissionada_enf
                     else:
                         total_de_ingressos -= cortesia_comissionada_enf
+                        ingressos_emitidos += cortesia_comissionada_enf
+                        cortesia_comissionadas_total += cortesia_comissionada_enf
         elif pergunta1 == 2:
             ingressos_vendidos = int(input("Qual é a quantidade de ingressos a emitir?\n"))
             ingresso_inteira_direta = 0
@@ -182,6 +199,8 @@ while periodo_de_vendas and total_de_ingressos > 0:
                     ingresso_meia_direta += 1
                     total_de_ingressos -= 1
                     aux += 1
+                    while pergunta_meia != 1 and pergunta_meia != 2:
+                        pergunta_meia = int(input("Digite 1 para meia para estudantes; 2, para idosos\n"))
                     if pergunta_meia == 1:
                         ingressos_meias_estudantes += 1
                     elif pergunta_meia == 2:
@@ -206,3 +225,50 @@ while periodo_de_vendas and total_de_ingressos > 0:
         periodo_de_vendas = False
     else:
         pergunta0 = int(input("Ainda está no período de vendas? 1 para SIM; 2 para NÃO\n"))
+
+if ingresso_inteira > ingresso_meia and ingresso_inteira > ingressos_alunos_ecomp_total:
+    ingresso_aux = str("Ingresso do tipo INTEIRA\n")
+    print(ingresso_aux)
+elif ingresso_meia > ingresso_inteira and ingresso_meia > ingressos_alunos_ecomp_total:
+    ingresso_aux = str("Ingresso do tipo MEIA\n")
+    print(ingresso_aux)
+elif ingressos_alunos_ecomp_total > ingresso_inteira and ingressos_alunos_ecomp_total > ingresso_meia:
+    ingresso_aux = str("Ingresso do tipo ECOMP\n")
+    print(ingresso_aux)
+elif ingresso_inteira == ingresso_meia == ingressos_alunos_ecomp_total:
+    ingresso_aux = str("Todos foram vendidos em igual quantidade\n")
+    print(ingresso_aux)
+elif ingresso_inteira == ingresso_meia or ingresso_inteira == ingressos_alunos_ecomp_total or ingresso_meia == ingressos_alunos_ecomp_total:
+    if ingresso_inteira == ingresso_meia:
+        ingresso_aux = str("Os tipos mais vendidos foram do tipo INTEIRA e MEIA\n")
+        print(ingresso_aux)
+    elif ingresso_inteira == ingressos_alunos_ecomp_total:
+        ingresso_aux = str("Os tipos mais vendidos foram do tipo INTEIRA e ECOMP\n")
+        print(ingresso_aux)
+    elif ingresso_meia == ingressos_alunos_ecomp_total:
+        ingresso_aux = str("Os tipos mais vendidos foram do tipo MEIA e ECOMP\n")
+        print(ingresso_aux)
+else:
+    print("Não é possível dizer\n")
+
+soma_auxiliar = cortesia_da + cortesia_convidados + cortesia_da + cortesia_convidados
+media = idades // (ingressos_emitidos - soma_auxiliar)
+ingressos_nao_emitidos = total_aux - ingressos_emitidos
+
+print("%d ingressos emitidos\n" % ingressos_emitidos)
+print("%d não foram emitidos\n" % ingressos_nao_emitidos)
+print("%d ingressos de meia-entrada para estudantes foram emitidos\n" % ingressos_meias_estudantes)
+print("%d ingressos de meia-entrada para idosos foram emitidos\n" % ingressos_meias_idosos)
+print("%d ingressos de inteira foram emitidos\n" % ingresso_inteira)
+print("%d ingressos emitidos para alunos de Ecomp\n" % ingressos_alunos_ecomp_total)
+print("%d ingressos emitidos para o DA" % cortesia_da)
+print("%d ingressos emitidos para os convidados" % cortesia_convidados)
+print("%d ingressos de cortesia para vendedores comissionados" % cortesia_comissionadas_total)
+print("%d ingressos foram vendidos por BIOLOGIA\n" % vendas_bio_total)
+print("%d ingressos foram vendidos por ENFERMAGEM\n" % vendas_enf_total)
+print("As vendas arrecadaram R$%.2f\n" % (arrecadacao_inteira + arrecadacao_meia + arrecadacao_ecomp))
+print("As inteiras arrecadaram R$%.2f\n" % arrecadacao_inteira)
+print("As meias-entradas arrecadaram R$%.2f\n" % arrecadacao_meia)
+print("As entradas para alunos de ecomp arrecadaram R$%.2f\n" % arrecadacao_ecomp)
+print("O tipo de ingresso mais vendido foi %s" % ingresso_aux)
+print("%d anos é a média de idades\n" % media)
