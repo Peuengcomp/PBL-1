@@ -1,8 +1,4 @@
 # Início do código
-inicializador = int(input("Para entrar no programa, digite qualquer coisa. Se quiser encerrar, digite 0\n"))
-if inicializador == 0:
-    print("Programa encerrado\n") 
-    exit()
 periodo_de_vendas = True
 total_de_ingressos = int(input("Quantos ingressos deseja vender para este evento\n"))
 total_aux = total_de_ingressos
@@ -251,8 +247,11 @@ elif ingresso_inteira == ingresso_meia or ingresso_inteira == ingressos_alunos_e
 else:
     print("Não é possível dizer\n")
 
-soma_auxiliar = cortesia_da + cortesia_convidados + cortesia_da + cortesia_convidados
-media = idades // (ingressos_emitidos - soma_auxiliar)
+soma_auxiliar = cortesia_da + cortesia_convidados + cortesia_comissionadas_total
+if ingressos_emitidos != 0:
+    media = idades // (ingressos_emitidos - soma_auxiliar)
+else:
+    media = 0
 ingressos_nao_emitidos = total_aux - ingressos_emitidos
 
 print("%d ingressos emitidos\n" % ingressos_emitidos)
@@ -261,14 +260,14 @@ print("%d ingressos de meia-entrada para estudantes foram emitidos\n" % ingresso
 print("%d ingressos de meia-entrada para idosos foram emitidos\n" % ingressos_meias_idosos)
 print("%d ingressos de inteira foram emitidos\n" % ingresso_inteira)
 print("%d ingressos emitidos para alunos de Ecomp\n" % ingressos_alunos_ecomp_total)
-print("%d ingressos emitidos para o DA" % cortesia_da)
-print("%d ingressos emitidos para os convidados" % cortesia_convidados)
-print("%d ingressos de cortesia para vendedores comissionados" % cortesia_comissionadas_total)
+print("%d ingressos emitidos para o DA\n" % cortesia_da)
+print("%d ingressos emitidos para os convidados\n" % cortesia_convidados)
+print("%d ingressos de cortesia para vendedores comissionados\n" % cortesia_comissionadas_total)
 print("%d ingressos foram vendidos por BIOLOGIA\n" % vendas_bio_total)
 print("%d ingressos foram vendidos por ENFERMAGEM\n" % vendas_enf_total)
 print("As vendas arrecadaram R$%.2f\n" % (arrecadacao_inteira + arrecadacao_meia + arrecadacao_ecomp))
 print("As inteiras arrecadaram R$%.2f\n" % arrecadacao_inteira)
 print("As meias-entradas arrecadaram R$%.2f\n" % arrecadacao_meia)
 print("As entradas para alunos de ecomp arrecadaram R$%.2f\n" % arrecadacao_ecomp)
-print("O tipo de ingresso mais vendido foi %s" % ingresso_aux)
-print("%d anos é a média de idades\n" % media)
+print("%s" % ingresso_aux)
+print("%d é a média de idades\n" % media)
