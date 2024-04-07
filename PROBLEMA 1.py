@@ -1,16 +1,20 @@
 # Início do código
 periodo_de_vendas = True
 total_de_ingressos = int(input("Quantos ingressos deseja vender para este evento\n"))
+if total_de_ingressos == 0:
+    print("Programa encerrado\n")
+    exit()
+while total_de_ingressos < 0:
+    total_de_ingressos = int(input("Digite um valor válido de ingressos\n"))
 total_aux = total_de_ingressos
 print("Há %d ingressos disponíveis\n" % total_aux)
-# Cortesia dos membros do DA
+# Cortesia dos membros do DA e convidados
 cortesia_da = int(input("São quantos membros do D.A.\n"))
-# Cortesia para convidados
 cortesia_convidados = int(input("Quantos convidados serão?\n"))
 # Contador de ingressos totais
 soma_auxiliar = cortesia_da + cortesia_convidados
 if total_aux >= soma_auxiliar:
-    total_de_ingressos -= (cortesia_da + cortesia_convidados)
+    total_de_ingressos -= soma_auxiliar
 else:
     while total_aux < soma_auxiliar:
         cortesia_da = 0
@@ -20,6 +24,7 @@ else:
         cortesia_da = int(input("São quantos membros do D.A.\n"))
         cortesia_convidados = int(input("Quantos convidados serão?\n"))
         soma_auxiliar = cortesia_da + cortesia_convidados
+    total_de_ingressos -= soma_auxiliar
 # Tipos de vendas
 vendas_diretas = 0
 vendas_bio_total = 0
