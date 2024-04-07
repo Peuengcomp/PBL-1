@@ -2,12 +2,24 @@
 periodo_de_vendas = True
 total_de_ingressos = int(input("Quantos ingressos deseja vender para este evento\n"))
 total_aux = total_de_ingressos
+print("Há %d ingressos disponíveis\n" % total_aux)
 # Cortesia dos membros do DA
 cortesia_da = int(input("São quantos membros do D.A.\n"))
 # Cortesia para convidados
 cortesia_convidados = int(input("Quantos convidados serão?\n"))
 # Contador de ingressos totais
-total_de_ingressos -= (cortesia_da + cortesia_convidados)
+soma_auxiliar = cortesia_da + cortesia_convidados
+if total_aux >= soma_auxiliar:
+    total_de_ingressos -= (cortesia_da + cortesia_convidados)
+else:
+    while total_aux < soma_auxiliar:
+        cortesia_da = 0
+        cortesia_convidados = 0
+        print("Há %d ingressos disponíveis\n" % total_aux)
+        print("Digite a quantidade de cortesias que não ultrapasse a quantidade de ingressos disponível\n")
+        cortesia_da = int(input("São quantos membros do D.A.\n"))
+        cortesia_convidados = int(input("Quantos convidados serão?\n"))
+        soma_auxiliar = cortesia_da + cortesia_convidados
 # Tipos de vendas
 vendas_diretas = 0
 vendas_bio_total = 0
@@ -248,18 +260,21 @@ elif ingresso_inteira == ingresso_meia or ingresso_inteira == ingressos_alunos_e
 else:
     print("Não é possível dizer\n")
 
-soma_auxiliar = cortesia_da + cortesia_convidados + cortesia_comissionadas_total
+soma_auxiliar += cortesia_comissionadas_total
 if ingressos_emitidos != 0:
-    media = idades // (ingressos_emitidos - soma_auxiliar)
+    if ingressos_emitidos == soma_auxiliar:
+        media = 0
+    else:
+        media = idades // (ingressos_emitidos - soma_auxiliar)
 else:
     media = 0
 ingressos_nao_emitidos = total_aux - ingressos_emitidos
 
 print("%d ingressos emitidos\n" % ingressos_emitidos)
 print("%d não foram emitidos\n" % ingressos_nao_emitidos)
-print("%d ingressos de meia-entrada para estudantes foram emitidos\n" % ingressos_meias_estudantes)
-print("%d ingressos de meia-entrada para idosos foram emitidos\n" % ingressos_meias_idosos)
-print("%d ingressos de inteira foram emitidos\n" % ingresso_inteira)
+print("%d ingressos do TIPO INTEIRA foram emitidos\n" % ingresso_inteira)
+print("%d ingressos do TIPO MEIA para ESTUDANTES foram emitidos\n" % ingressos_meias_estudantes)
+print("%d ingressos do TIPO MEIA para IDOSOS foram emitidos\n" % ingressos_meias_idosos)
 print("%d ingressos emitidos para alunos de Ecomp\n" % ingressos_alunos_ecomp_total)
 print("%d ingressos emitidos para o DA\n" % cortesia_da)
 print("%d ingressos emitidos para os convidados\n" % cortesia_convidados)
@@ -270,5 +285,5 @@ print("As vendas arrecadaram R$%.2f\n" % (arrecadacao_inteira + arrecadacao_meia
 print("As inteiras arrecadaram R$%.2f\n" % arrecadacao_inteira)
 print("As meias-entradas arrecadaram R$%.2f\n" % arrecadacao_meia)
 print("As entradas para alunos de ecomp arrecadaram R$%.2f\n" % arrecadacao_ecomp)
-print("%s\n" % ingresso_aux)
-print("%d\n é a média de idades\n" % media)
+print("%s" % ingresso_aux)
+print("%d é a média de idades\n" % media)
