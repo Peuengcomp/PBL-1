@@ -51,7 +51,7 @@ while periodo_de_vendas and total_de_ingressos > 0:
                 ingresso_meia_bio = 0
                 ingresso_alunos_ecomp_bio = 0
                 while aux <= ingressos_vendidos:
-                    print("Sobre o ingresso %d" % aux)
+                    print("Insira as informações do ingresso nº %d" % aux)
                     idade = int(input("Digite a idade do comprador\n"))
                     idades += idade
                     ingresso = int(input("Qual tipo de ingresso emitido? Digite 1 para inteira; 2, para meia; 3, para alunos de ECOMP\n"))
@@ -116,7 +116,7 @@ while periodo_de_vendas and total_de_ingressos > 0:
                 ingresso_meia_enf = 0
                 ingresso_alunos_ecomp_enf = 0
                 while aux <= ingressos_vendidos:
-                    print("Sobre o ingresso %d" % aux)
+                    print("Insira as informações do ingresso nº %d" % aux)
                     idade = int(input("Digite a idade do comprador\n"))
                     idades += idade
                     ingresso = int(input("Qual tipo de ingresso foi emitido? Digite 1 para inteira; 2, para meia; 3, para alunos de ECOMP\n"))
@@ -179,6 +179,7 @@ while periodo_de_vendas and total_de_ingressos > 0:
             while ingressos_vendidos > total_de_ingressos:
                 ingressos_vendidos = int(input("Digite um valor válido\n"))
             while aux < ingressos_vendidos:
+                print("Insira as informações do ingresso nº %d" % aux)
                 idade = int(input("Digite a idade do comprador\n"))
                 idades += idade
                 ingresso = int(input("Qual tipo de ingresso foi vendido? Digite 1 para inteira; 2, para meia; 3, para alunos de ECOMP\n"))
@@ -269,5 +270,5 @@ print("As vendas arrecadaram R$%.2f\n" % (arrecadacao_inteira + arrecadacao_meia
 print("As inteiras arrecadaram R$%.2f\n" % arrecadacao_inteira)
 print("As meias-entradas arrecadaram R$%.2f\n" % arrecadacao_meia)
 print("As entradas para alunos de ecomp arrecadaram R$%.2f\n" % arrecadacao_ecomp)
-print("%s" % ingresso_aux)
-print("%d é a média de idades\n" % media)
+print("%s\n" % ingresso_aux)
+print("%d\n é a média de idades\n" % media)
