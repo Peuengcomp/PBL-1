@@ -192,10 +192,10 @@ while periodo_de_vendas and total_de_ingressos > 0:
             ingresso_inteira_direta = 0
             ingresso_meia_direta = 0
             ingresso_alunos_ecomp_direta = 0
-            aux = 0
+            aux = 1
             while ingressos_vendidos > total_de_ingressos:
                 ingressos_vendidos = int(input("Digite um valor válido\n"))
-            while aux < ingressos_vendidos:
+            while aux <= ingressos_vendidos:
                 print("Insira as informações do ingresso nº %d" % aux)
                 idade = int(input("Digite a idade do comprador\n"))
                 idades += idade
