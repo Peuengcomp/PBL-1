@@ -258,7 +258,7 @@ elif ingresso_meia > ingresso_inteira and ingresso_meia > ingresso_ecomp:
 elif ingresso_ecomp > ingresso_inteira and ingresso_ecomp > ingresso_meia:
     ingresso_aux = str("Ingresso do tipo ECOMP\n")
 elif ingresso_inteira == ingresso_meia == ingresso_ecomp:
-    if aux_total_ingressos == cortesia_da + cortesia_convidados:
+    if aux_total_ingressos == cortesia_da + cortesia_convidados or (ingresso_inteira == ingresso_meia == ingresso_ecomp == 0):
         ingresso_aux = str("Nenhum ingresso foi vendido\n")
     else:
         ingresso_aux = str("Todos foram vendidos em igual quantidade\n")
