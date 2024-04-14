@@ -49,10 +49,10 @@ ingressos_nao_emitidos = 0
 idade_total = 0
 # Loop que vai ser executado conforme ainda haja disponibilidade de ingresso e dentro do período de vendas
 while periodo_de_venda and total_de_ingressos > 0:
+    print("Há %d ingressos disponíveis\n" % total_de_ingressos)
     pergunta0 = int(input("Ainda está no período de vendas? 1 para SIM; 2 para NÃO\n"))
     if pergunta0 == 1:
-        # Esta célula imprime a quantidade de ingressos disponíveis e pergunta se a venda é comissionada ou não
-        print("Há %d ingressos disponíveis\n" % total_de_ingressos)
+        # Esta célula pergunta se a venda é comissionada ou não
         pergunta1 = int(input("A venda é comissionada? Digite 1 para SIM; 2, para NÃO\n"))
         # Esta se refere ao tipo de venda comissionada
         if pergunta1 == 1:
@@ -124,6 +124,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                     ingressos_emitidos += comissao_bio
                     comissao_total += comissao_bio
                 # Fim da contabilização para o curso de BIOLOGIA
+            
             elif curso == 2:
                 total_aux = 0
                 quantidade_vendida = int(input("Digite a quantidade de ingressos vendidos\n"))
@@ -187,6 +188,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                     ingressos_emitidos += comissao_enf
                     comissao_total += comissao_enf
                 # Fim da contabilização para o curso de ENFERMAGEM
+        
         # Célula para cálculo de venda direta
         elif pergunta1 == 2:
             total_aux = 0
