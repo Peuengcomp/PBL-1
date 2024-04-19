@@ -1,15 +1,42 @@
+'''
+Autor: Pedro Lucas Fernandes de Souza
+Componente Curricular: Algoritmos 1
+Concluido em: 18/04/2024
+
+Declaro que este código foi elaborado por mim de forma individual e não contém nenhum trecho de código de outro colega ou de outro autor, 
+tais como provindos de livros e apostilas, e páginas ou documentos eletrônicos da Internet. 
+Qualquer trecho de código de outra autoria que não a minha está destacado com uma citação para o autor e a fonte do código, 
+tais como provindos de livros e apostilas, e páginas ou documentos eletrônicos da Internet. 
+Qualquer trecho de código de outra autoria que não a minha está destacado com uma citação para o autor e a fonte do código, 
+e estou ciente que estes trechos não serão considerados para fins de avaliação.
+'''
+
 # Declaração de variável booleana para período de vendas
 periodo_de_venda = True
 # Declaração de variáveis de entrada referentes ao total de ingressos e preços
-total_de_ingressos = int(input("Digite a quantidade de ingressos disponíveis\n"))
+total_de_ingressos = int(input("Digite a quantidade de ingressos para vender\n"))
+# Condicional que encerra o programa caso um número negativo seja digitado
+while total_de_ingressos < 0:
+    print("Digite valores válidos\n")
+    total_de_ingressos = int(input("Digite a quantidade de ingressos para vender\n"))
+# Esta célula é responsável por solicitar do usuário os preços dos ingressos
 preco_inteira = float(input("Digite o preço do ingresso do tipo INTEIRA\n"))
 preco_meia = float(input("Digite o preço do ingresso do tipo MEIA\n"))
 preco_ecomp = float(input("Digite o preço do ingresso do tipo ALUNOS DE ECOMP\n"))
-# Declaração de variável auxiliar da quantidade de ingressos para cálculos
+while preco_inteira < 0 or preco_meia < 0 or preco_ecomp < 0:
+    print("Digite valores válidos\n")
+    preco_inteira = float(input("Digite o preço do ingresso do tipo INTEIRA\n"))
+    preco_meia = float(input("Digite o preço do ingresso do tipo MEIA\n"))
+    preco_ecomp = float(input("Digite o preço do ingresso do tipo ALUNOS DE ECOMP\n"))
+# Declaração de variável auxiliar da quantidade de ingressos para cálculos referente aos ingressos fornecidos ao D.A. e CONVIDADOS
 aux_total_ingressos = total_de_ingressos
 # Entrada para quantidade de ingressos do D.A. e CONVIDADOS
-cortesia_da = int(input("São quantos membros do D.A.\n"))
-cortesia_convidados = int(input("Quantos convidados serão?\n"))
+cortesia_da = int(input("São quantos membros do D.A.?\n"))
+cortesia_convidados = int(input("Quantos convidados?\n"))
+while cortesia_da < 0 or cortesia_convidados < 0:
+    print("Digite valores válidos\n")
+    cortesia_da = int(input("São quantos membros do D.A.?\n"))
+    cortesia_convidados = int(input("Quantos convidados?\n"))
 # Contador de ingressos totais, para evitar que haja excedente de ingressos em relação aos ingressos fornecidos para o D.A. e CONVIDADOS
 soma_auxiliar = cortesia_da + cortesia_convidados
 if aux_total_ingressos >= soma_auxiliar:
@@ -64,32 +91,51 @@ while periodo_de_venda and total_de_ingressos > 0:
             if curso == 1:
                 total_aux = 0
                 quantidade_vendida = int(input("Digite a quantidade de ingressos vendidos\n"))
-                while quantidade_vendida > total_de_ingressos:
-                    quantidade_vendida = int(input("Digite uma quantidade igual ou menor de ingressos disponíveis\n"))
+                while quantidade_vendida > total_de_ingressos or quantidade_vendida <= 0:
+                    quantidade_vendida = int(input("Digite uma quantidade igual ou menor de ingressos disponíveis, nunca números negativos\n"))
                 while total_aux != quantidade_vendida:
                     print("Digite as quantidades cuja soma seja equivalente à quantidade vendida\n")
                     # Ceĺula referente ao cálculo da quantidade de ingressos e idades para INTEIRAS
                     ingresso_inteira_bio = int(input("Quantas INTEIRAS foram vendidas?\n"))
+                    while ingresso_inteira_bio < 0:
+                        print("Digite valores válidos\n")
+                        ingresso_inteira_bio = int(input("Quantas INTEIRAS foram vendidas?\n"))
                     if ingresso_inteira_bio != 0:
                         idade_inteira = int(input("Digite a soma das idades\n"))
+                        while idade_inteira < 0:
+                            print("Digite valores válidos\n")
+                            idade_inteira = int(input("Digite a soma das idades\n"))
                     else:
                         idade_inteira = 0
                     # Célula referente ao cálculo da quantidade de ingressos e idades para MEIAS
                     ingresso_meia_bio = int(input("Quantas MEIAS foram vendidas?\n"))
+                    while ingresso_meia_bio < 0:
+                        print("Digite valores válidos\n")
+                        ingresso_meia_bio = int(input("Quantas MEIAS foram vendidas?\n"))
                     if ingresso_meia_bio != 0:
                         idade_meia = int(input("Digite a soma das idades\n"))
+                        while idade_meia < 0:
+                            print("Digite valores válidos\n")
+                            idade_meia = int(input("Digite a soma das idades\n"))
                         meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
                         meia_idoso = int(input("Quantos ingressos para idosos?\n"))
-                        while meia_estudante + meia_idoso != ingresso_meia_bio:
+                        while meia_estudante + meia_idoso != ingresso_meia_bio or meia_estudante < 0 or meia_idoso < 0:
                             print("Digite a quantidade para cada tipo de meia equivalente à quantidade vendida\n")
+                            print("Não use números negativos\n")
                             meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
                             meia_idoso = int(input("Quantos ingressos para idosos?\n"))
                     else:
                         meia_estudante = meia_idoso = idade_meia = 0
                     # Célula referente ao cálculo da quantidade de ingressos e idade para alunos de ECOMP
                     ingresso_ecomp_bio = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
+                    while ingresso_ecomp_bio < 0:
+                        print("Digite valores válidos\n")
+                        ingresso_ecomp_bio = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
                     if ingresso_ecomp_bio != 0:
                         idade_ecomp = int(input("Digite a soma das idades\n"))
+                        while idade_ecomp < 0:
+                            print("Digite valores válidos\n")
+                            idade_ecomp = int(input("Digite a soma das idades\n"))
                     else:
                         idade_ecomp = 0
                     total_aux = ingresso_inteira_bio + ingresso_meia_bio + ingresso_ecomp_bio
@@ -128,32 +174,51 @@ while periodo_de_venda and total_de_ingressos > 0:
             elif curso == 2:
                 total_aux = 0
                 quantidade_vendida = int(input("Digite a quantidade de ingressos vendidos\n"))
-                while quantidade_vendida > total_de_ingressos:
-                    quantidade_vendida = int(input("Digite uma quantidade igual ou menor de ingressos disponíveis\n"))
+                while quantidade_vendida > total_de_ingressos or quantidade_vendida <= 0:
+                    quantidade_vendida = int(input("Digite uma quantidade igual ou menor de ingressos disponíveis, nunca números negativos\n"))
                 while total_aux != quantidade_vendida:
                     print("Digite as quantidades cuja soma seja equivalente à quantidade vendida\n")
                     # Ceĺula referente ao cálculo da quantidade de ingressos e idades para INTEIRAS
                     ingresso_inteira_enf = int(input("Quantas INTEIRAS foram vendidas?\n"))
+                    while ingresso_inteira_enf < 0:
+                        print("Digite valores válidos\n")
+                        ingresso_inteira_enf = int(input("Quantas INTEIRAS foram vendidas?\n"))
                     if ingresso_inteira_enf != 0:
                         idade_inteira = int(input("Digite a soma das idades\n"))
+                        while idade_inteira < 0:
+                            print("Digite valores válidos\n")
+                            idade_inteira = int(input("Digite a soma das idades\n"))
                     else:
                         idade_inteira = 0
                     # Célula referente ao cálculo da quantidade de ingressos e idades para MEIAS
                     ingresso_meia_enf = int(input("Quantas MEIAS foram vendidas?\n"))
+                    while ingresso_meia_enf < 0:
+                        print("Digite valores válidos\n")
+                        ingresso_meia_enf = int(input("Quantas MEIAS foram vendidas?\n"))
                     if ingresso_meia_enf != 0:
                         idade_meia = int(input("Digite a soma das idades\n"))
+                        while idade_meia < 0:
+                            print("Digite valores válidos\n")
+                            idade_meia = int(input("Digite a soma das idades\n"))
                         meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
                         meia_idoso = int(input("Quantos ingressos para idosos?\n"))
-                        while meia_estudante + meia_idoso != ingresso_meia_enf:
-                            print("Digite uma quantidade válida\n")
+                        while meia_estudante + meia_idoso != ingresso_meia_enf or meia_estudante < 0 or meia_idoso < 0:
+                            print("Digite a quantidade para cada tipo de meia equivalente à quantidade vendida\n")
+                            print("Não use números negativos\n")
                             meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
                             meia_idoso = int(input("Quantos ingressos para idosos?\n"))
                     else:
                         meia_estudante = meia_idoso = idade_meia = 0
                     # Célula referente ao cálculo da quantidade de ingressos e idade para alunos de ECOMP
                     ingresso_ecomp_enf = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
+                    while ingresso_ecomp_enf < 0:
+                        print("Digite valores válidos\n")
+                        ingresso_ecomp_enf = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
                     if ingresso_ecomp_enf != 0:
                         idade_ecomp = int(input("Digite a soma das idades\n"))
+                        while idade_ecomp < 0:
+                            print("Digite valores válidos\n")
+                            idade_ecomp = int(input("Digite a soma das idades\n"))
                     else:
                         idade_ecomp = 0
                     total_aux = ingresso_inteira_enf + ingresso_meia_enf + ingresso_ecomp_enf
@@ -189,36 +254,55 @@ while periodo_de_venda and total_de_ingressos > 0:
                     comissao_total += comissao_enf
                 # Fim da contabilização para o curso de ENFERMAGEM
         
-        # Célula para cálculo de venda direta
+        # Célula para cálculo de venda direta, ou seja, não comissionada
         elif pergunta1 == 2:
             total_aux = 0
             quantidade_vendida = int(input("Digite a quantidade de ingressos vendidos\n"))
-            while quantidade_vendida > total_de_ingressos:
-                quantidade_vendida = int(input("Digite uma quantidade igual ou menor de ingressos disponíveis\n"))
+            while quantidade_vendida > total_de_ingressos or quantidade_vendida <= 0:
+                quantidade_vendida = int(input("Digite uma quantidade igual ou menor de ingressos disponíveis, nunca números negativos\n"))
             while total_aux != quantidade_vendida:
                 print("Digite as quantidades cuja soma seja equivalente à quantidade vendida\n")
                 # Ceĺula referente ao cálculo da quantidade de ingressos e idades para INTEIRAS
                 ingresso_inteira_direta = int(input("Quantas INTEIRAS foram vendidas?\n"))
+                while ingresso_inteira_direta < 0:
+                    print("Digite valores válidos\n")
+                    ingresso_inteira_direta = int(input("Quantas INTEIRAS foram vendidas?\n"))
                 if ingresso_inteira_direta != 0:
                     idade_inteira = int(input("Digite a soma das idades\n"))
+                    while idade_inteira < 0:
+                        print("Digite valores válidos\n")
+                        idade_inteira = int(input("Digite a soma das idades\n"))
                 else:
                     idade_inteira = 0
                 # Célula referente ao cálculo da quantidade de ingressos e idades para MEIAS
                 ingresso_meia_direta = int(input("Quantas MEIAS foram vendidas?\n"))
+                while ingresso_meia_direta < 0:
+                    print("Digite valores válidos\n")
+                    ingresso_meia_direta = int(input("Quantas MEIAS foram vendidas?\n"))
                 if ingresso_meia_direta != 0:
                     idade_meia = int(input("Digite a soma das idades\n"))
+                    while idade_meia < 0:
+                        print("Digite valores válidos\n")
+                        idade_meia = int(input("Digite a soma das idades\n"))
                     meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
                     meia_idoso = int(input("Quantos ingressos para idosos?\n"))
-                    while meia_estudante + meia_idoso != ingresso_meia_direta:
-                        print("Digite uma quantidade válida\n")
+                    while meia_estudante + meia_idoso != ingresso_meia_direta or meia_estudante < 0 or meia_idoso < 0:
+                        print("Digite a quantidade para cada tipo de meia equivalente à quantidade vendida\n")
+                        print("Não use números negativos\n")
                         meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
                         meia_idoso = int(input("Quantos ingressos para idosos?\n"))
                 else:
                     meia_estudante = meia_idoso = idade_meia = 0
                 # Célula referente ao cálculo da quantidade de ingressos e idade para alunos de ECOMP
                 ingresso_ecomp_direta = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
+                while ingresso_ecomp_direta < 0:
+                    print("Digite valores válidos\n")
+                    ingresso_ecomp_direta = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
                 if ingresso_ecomp_direta != 0:
                     idade_ecomp = int(input("Digite a soma das idades\n"))
+                    while idade_ecomp < 0:
+                        print("Digite valores válidos\n")
+                        idade_ecomp = int(input("Digite a soma das idades\n"))
                 else:
                     idade_ecomp = 0
                 total_aux += ingresso_inteira_direta + ingresso_meia_direta + ingresso_ecomp_direta
@@ -240,25 +324,25 @@ while periodo_de_venda and total_de_ingressos > 0:
             arrecadacao_inteira += ingresso_inteira_direta*preco_inteira
             arrecadacao_meia += ingresso_meia_direta*preco_meia
             arrecadacao_ecomp += ingresso_ecomp_direta*preco_ecomp
-        # célula que mantém a estrutura de repetição caso haja erro de digitação
+        # Célula que mantém a estrutura de repetição caso haja erro de digitação
         else:
-            pergunta1 = int(input("A venda é comissionada? Digite 1 para SIM; 2, para NÃO\n"))
+            print("Por favor, digite corretamente os valores solicitados\n")
     # Caso acabe o período de vendas, imprime o resultado do relatório
     elif pergunta0 == 2:
         periodo_de_venda = False
-    # célula que mantém a estrutura de repetição caso haja erro de digitação   
+    # Célula que mantém a estrutura de repetição caso haja erro de digitação   
     else:
-        pergunta0 = int(input("Ainda está no período de vendas? 1 para SIM; 2 para NÃO\n"))
+        print("Digite um valor válido\n")
 
 # Esta célula calcula quais tipos de ingressos venderam mais ou não venderam nenhum
 if ingresso_inteira > ingresso_meia and ingresso_inteira > ingresso_ecomp:
-    ingresso_aux = str("Ingresso do tipo INTEIRA\n")
+    ingresso_aux = str("Ingresso do tipo INTEIRA foi o mais vendido\n")
 elif ingresso_meia > ingresso_inteira and ingresso_meia > ingresso_ecomp:
-    ingresso_aux = str("Ingresso do tipo MEIA\n")
+    ingresso_aux = str("Ingresso do tipo MEIA foi o mais vendido\n")
 elif ingresso_ecomp > ingresso_inteira and ingresso_ecomp > ingresso_meia:
-    ingresso_aux = str("Ingresso do tipo ECOMP\n")
+    ingresso_aux = str("Ingresso do tipo ECOMP foi o mais vendido\n")
 elif ingresso_inteira == ingresso_meia == ingresso_ecomp:
-    if aux_total_ingressos == cortesia_da + cortesia_convidados or (ingresso_inteira == ingresso_meia == ingresso_ecomp == 0):
+    if ingresso_inteira == ingresso_meia == ingresso_ecomp == 0:
         ingresso_aux = str("Nenhum ingresso foi vendido\n")
     else:
         ingresso_aux = str("Todos foram vendidos em igual quantidade\n")
