@@ -1,6 +1,6 @@
 '''
 Autor: Pedro Lucas Fernandes de Souza
-Componente Curricular: Algoritmos 1
+Componente Curricular: Algoritmos I
 Concluido em: 18/04/2024
 
 Declaro que este código foi elaborado por mim de forma individual e não contém nenhum trecho de código de outro colega ou de outro autor, 
@@ -102,7 +102,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                         ingresso_inteira_bio = int(input("Quantas INTEIRAS foram vendidas?\n"))
                     if ingresso_inteira_bio != 0:
                         idade_inteira = int(input("Digite a soma das idades\n"))
-                        while idade_inteira < 0:
+                        while idade_inteira <= 0:
                             print("Digite valores válidos\n")
                             idade_inteira = int(input("Digite a soma das idades\n"))
                     else:
@@ -114,7 +114,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                         ingresso_meia_bio = int(input("Quantas MEIAS foram vendidas?\n"))
                     if ingresso_meia_bio != 0:
                         idade_meia = int(input("Digite a soma das idades\n"))
-                        while idade_meia < 0:
+                        while idade_meia <= 0:
                             print("Digite valores válidos\n")
                             idade_meia = int(input("Digite a soma das idades\n"))
                         meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
@@ -133,7 +133,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                         ingresso_ecomp_bio = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
                     if ingresso_ecomp_bio != 0:
                         idade_ecomp = int(input("Digite a soma das idades\n"))
-                        while idade_ecomp < 0:
+                        while idade_ecomp <= 0:
                             print("Digite valores válidos\n")
                             idade_ecomp = int(input("Digite a soma das idades\n"))
                     else:
@@ -185,7 +185,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                         ingresso_inteira_enf = int(input("Quantas INTEIRAS foram vendidas?\n"))
                     if ingresso_inteira_enf != 0:
                         idade_inteira = int(input("Digite a soma das idades\n"))
-                        while idade_inteira < 0:
+                        while idade_inteira <= 0:
                             print("Digite valores válidos\n")
                             idade_inteira = int(input("Digite a soma das idades\n"))
                     else:
@@ -197,7 +197,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                         ingresso_meia_enf = int(input("Quantas MEIAS foram vendidas?\n"))
                     if ingresso_meia_enf != 0:
                         idade_meia = int(input("Digite a soma das idades\n"))
-                        while idade_meia < 0:
+                        while idade_meia <= 0:
                             print("Digite valores válidos\n")
                             idade_meia = int(input("Digite a soma das idades\n"))
                         meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
@@ -216,7 +216,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                         ingresso_ecomp_enf = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
                     if ingresso_ecomp_enf != 0:
                         idade_ecomp = int(input("Digite a soma das idades\n"))
-                        while idade_ecomp < 0:
+                        while idade_ecomp <= 0:
                             print("Digite valores válidos\n")
                             idade_ecomp = int(input("Digite a soma das idades\n"))
                     else:
@@ -269,7 +269,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                     ingresso_inteira_direta = int(input("Quantas INTEIRAS foram vendidas?\n"))
                 if ingresso_inteira_direta != 0:
                     idade_inteira = int(input("Digite a soma das idades\n"))
-                    while idade_inteira < 0:
+                    while idade_inteira <= 0:
                         print("Digite valores válidos\n")
                         idade_inteira = int(input("Digite a soma das idades\n"))
                 else:
@@ -281,7 +281,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                     ingresso_meia_direta = int(input("Quantas MEIAS foram vendidas?\n"))
                 if ingresso_meia_direta != 0:
                     idade_meia = int(input("Digite a soma das idades\n"))
-                    while idade_meia < 0:
+                    while idade_meia <= 0:
                         print("Digite valores válidos\n")
                         idade_meia = int(input("Digite a soma das idades\n"))
                     meia_estudante = int(input("Quantos ingressos para estudantes?\n"))
@@ -300,7 +300,7 @@ while periodo_de_venda and total_de_ingressos > 0:
                     ingresso_ecomp_direta = int(input("Quantos ingressos para ALUNOS DE ECOMP?\n"))
                 if ingresso_ecomp_direta != 0:
                     idade_ecomp = int(input("Digite a soma das idades\n"))
-                    while idade_ecomp < 0:
+                    while idade_ecomp <= 0:
                         print("Digite valores válidos\n")
                         idade_ecomp = int(input("Digite a soma das idades\n"))
                 else:
